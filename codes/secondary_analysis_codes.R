@@ -179,3 +179,28 @@ ggplot(percentage_df, aes(x = "Cell_type", y = sc, fill = Cell_type)) +
   geom_bar(stat = "identity") +
   scale_fill_manual(values = color_mapping) +  theme_bw()
 
+
+#Knee-plot graphs using RSEC counts
+#Calculate total UMI counts per cell
+<samplename>_RSEC_MolsPerCell <- read_csv("<samplename>_RSEC_MolsPerCell.csv", comment = "#")
+rownames(<samplename>_RSEC_MolsPerCell) <- <samplename>_RSEC_MolsPerCell$Cell_Index
+data <- as.data.frame(<samplename>_RSEC_MolsPerCell)
+umi_counts_per_cell <- data %>%
+  rowwise() %>%
+  mutate(Total_UMI = sum(c_across(-Cell_Index), na.rm = TRUE)) %>%
+  ungroup() %>%
+  dplyr::select(Cell_Index, Total_UMI)
+
+#Sort UMI counts in descending order
+sorted_umi_counts <- umi_counts_per_cell %>%
+  arrange(desc(Total_UMI)) %>%
+  mutate(Rank = row_number())
+
+#Plot
+ggplot(sorted_umi_counts, aes(x = Rank, y = Total_UMI)) +
+  geom_line() +
+  scale_y_log10() + 
+  labs(title = "Knee Plot of UMI Counts per Cell",
+       x = "Cell Rank",
+       y = "Total UMI Counts (log10 scale)") +
+  theme_minimal()
