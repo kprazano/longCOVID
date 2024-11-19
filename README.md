@@ -10,4 +10,6 @@ The raw sequencing data used in this study is available in GEO under an accessio
 The codes used in the study can be found in the "codes" folder. Relevant metadata can be found in the "data" folder and the processed count matrices can be accessed via Releases.
 
 ```
+![Picture1](https://github.com/user-attachments/assets/a513e339-ec04-4c71-9567-9c12d8f9c4d0) 
+
 More details TBA.
