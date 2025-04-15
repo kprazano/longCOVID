@@ -12,4 +12,4 @@ The codes used in the study can be found in the "codes" folder. Relevant metadat
 ```
 ![Picture1](https://github.com/user-attachments/assets/a513e339-ec04-4c71-9567-9c12d8f9c4d0) 
 
-More details TBA.
+Our study was published January 30 2025 in Scientific Data: https://doi.org/10.1038/s41597-025-04510-1
